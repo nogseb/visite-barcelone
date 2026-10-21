@@ -1,0 +1,65 @@
+name: Déployer Barcelone sur OVH
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ovh-visite-barcelone
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vérifier les identifiants nécessaires
+        id: verify
+        env:
+          HOST: ${{ secrets.OVH_SFTP_HOST }}
+          USER: ${{ secrets.OVH_SFTP_USER }}
+          PASS: ${{ secrets.OVH_SFTP_PASSWORD }}
+        run: |
+          if [[ -z "$HOST" || -z "$USER" || -z "$PASS" ]]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::error::Secrets SFTP manquants. Aucun transfert effectué."
+            exit 1
+          fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+      - name: Contrôle des fichiers et de l'isolation
+        run: |
+          set -euo pipefail
+          SRC="$GITHUB_WORKSPACE/www/visite-barcelone"
+          [[ -f "$SRC/index.html" && -f "$SRC/.htaccess" ]]
+          [[ "$(realpath "$SRC")" == "$GITHUB_WORKSPACE/www/visite-barcelone" ]]
+          [[ "www/visite-barcelone" != "www/ds" ]]
+      - name: Installer le client SFTP
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: Contrôle de l'empreinte SSH
+        env:
+          HOST: ${{ secrets.OVH_SFTP_HOST }}
+          PIN: ${{ secrets.OVH_SFTP_HOST_FINGERPRINT }}
+        run: |
+          set -euo pipefail
+          [[ -n "$PIN" ]] || { echo "::error::Empreinte SSH non configurée (OVH_SFTP_HOST_FINGERPRINT)."; exit 1; }
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          ssh-keyscan -T 10 -p 22 "$HOST" 2>/dev/null > "$HOME/.ssh/known_hosts"
+          test -s "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+          ssh-keygen -lf "$HOME/.ssh/known_hosts" | grep -F -- "$PIN" >/dev/null || { echo "::error::Empreinte hôte inattendue"; exit 1; }
+      - name: Déploiement isolé sans suppression distante
+        env:
+          HOST: ${{ secrets.OVH_SFTP_HOST }}
+          USER: ${{ secrets.OVH_SFTP_USER }}
+          PASS: ${{ secrets.OVH_SFTP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          SRC="$GITHUB_WORKSPACE/www/visite-barcelone"
+          lftp -u "$USER,$PASS" "sftp://$HOST" <<LFTP
+          set net:max-retries 2
+          set net:timeout 30
+          mkdir -p www/visite-barcelone
+          mirror --reverse --verbose=1 --parallel=2 --no-perms "$SRC/" "www/visite-barcelone/"
+          bye
+          LFTP

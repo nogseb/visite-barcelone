@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr" data-na-projet="Barcelone · Carnet d'escapade" data-na-categorie="perso" data-na-maj="2026-10-21" data-na-outils="ChatGPT, Leaflet, OpenStreetMap, GitHub Actions">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#122c34">
+  <title>Barcelone & la côte catalane — Carnet d’avril 2026</title>
+  <meta name="description" content="Carnet d'une escapade catalane du 24 au 28 avril 2026 : musées de Barcelone, Costa Brava, Banyuls et Tour Madeloc. Réservations et itinéraires envisagés.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Barcelone & la côte catalane — Avril 2026">
+  <meta property="og:description" content="Cinq jours, trois musées au programme et un littoral à explorer. Carnet d'itinéraire documenté.">
+  <meta property="og:image" content="https://nogues.app/visite-barcelone/assets/partage.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://nogues.app/visite-barcelone/">
+  <link rel="canonical" href="https://nogues.app/visite-barcelone/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/ds/v1/na.css">
+  <script defer src="/ds/v1/na.js"></script>
+  <link rel="stylesheet" href="./assets/leaflet/leaflet.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./assets/leaflet/leaflet.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <main id="contenu">
+    <section class="hero" aria-labelledby="titre">
+      <div class="hero-content container">
+        <div class="hero-copy">
+          <div class="superline"><span class="star" aria-hidden="true">✳</span> CARNET / 24—28 AVRIL 2026 <span class="hero-dash"></span> CATALOGNE</div>
+          <h1 id="titre">Barcelona<span class="hero-period">.</span><br><em>Un autre</em><br>horizon.</h1>
+          <p class="hero-lead">D’une ruelle d’El Born aux criques de la Costa Brava, un voyage qui dessine sa route entre l’art, les villes et la Méditerranée.</p>
+          <div class="hero-ctas"><a class="button button-primary" href="#explorer">Explorer les étapes <span aria-hidden="true">↗</span></a><a class="button button-outline" href="#carnet">Le carnet <span aria-hidden="true">↓</span></a></div>
+          <p class="hero-annotation">ESPAGNE → FRANCE <span aria-hidden="true">•</span> 5 JOURS / 4 NUITS <span aria-hidden="true">•</span> PRINTEMPS 2026</p>
+        </div>
+        <figure class="hero-art">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Barcelona%20Skyline.jpg?width=1280" width="1280" height="590" alt="Vue panoramique de Barcelone depuis les hauteurs de Montjuïc" fetchpriority="high" decoding="async">
+          <div class="hero-art-shade" aria-hidden="true"></div>
+          <span class="photo-tag">41°23′ N<br>2°10′ E</span>
+          <figcaption>Photo d’illustration, non issue du voyage — <a href="https://commons.wikimedia.org/wiki/File:Barcelona_Skyline.jpg" target="_blank" rel="noopener noreferrer">SGDWN / Wikimedia Commons, CC BY-SA 4.0</a></figcaption>
+        </figure>
+      </div>
+      <div class="hero-baseline container"><span>ART · RUELLES · CÔTE SAUVAGE</span><span class="line-waves" aria-hidden="true">∿ ∿ ∿ ∿ ∿</span><a href="#explorer">DÉCOUVRIR <span aria-hidden="true">↘</span></a></div>
+    </section>
+    <section class="stats container" aria-label="Le séjour en quelques repères">
+      <div class="stats-text"><span class="eyebrow">EN QUELQUES MOTS</span><p>La ville, <em>puis le large.</em></p></div>
+      <div class="stat"><strong>05</strong><span>jours d'escapade</span></div>
+      <div class="stat"><strong>03</strong><span>musées au programme</span></div>
+      <div class="stat"><strong>02</strong><span>pays traversés</span></div>
+    </section>
+    <section class="explore" id="explorer" aria-labelledby="titre-carte">
+      <div class="container">
+        <div class="section-intro"><div><span class="eyebrow">01 / L’ATLAS</span><h2 id="titre-carte">Chaque étape<br><em>a son histoire.</em></h2></div><p>De Barcelone à Banyuls, retrouvez les lieux du carnet sur la carte. Sélectionnez une journée pour afficher ses repères et sa chronologie.</p></div>
+        <div class="truth-note"><span class="truth-symbol" aria-hidden="true">i</span><p><strong>Un itinéraire reconstitué, pas un journal GPS.</strong> Les deux billets du samedi et les hébergements sont documentés ; les promenades, Miró et les randonnées sont des intentions ou propositions, sans confirmation de réalisation.</p></div>
+        <div class="tabs" role="tablist" aria-label="Afficher les étapes d’une journée">
+          <button type="button" class="day-tab selected" role="tab" id="tab-all" aria-controls="programme-du-jour" aria-selected="true" data-day="all"><span class="tab-top">VUE GLOBALE</span><span class="tab-big">Tout voir</span><span class="tab-bottom">24 → 28 avril</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-24" aria-controls="programme-du-jour" aria-selected="false" data-day="24" tabindex="-1"><span class="tab-top">VEN. 24</span><span class="tab-big">Le Perthus</span><span class="tab-bottom">Le point de départ</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-25" aria-controls="programme-du-jour" aria-selected="false" data-day="25" tabindex="-1"><span class="tab-top">SAM. 25</span><span class="tab-big">Barcelone</span><span class="tab-bottom">El Born & musées</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-26" aria-controls="programme-du-jour" aria-selected="false" data-day="26" tabindex="-1"><span class="tab-top">DIM. 26</span><span class="tab-big">Montjuïc</span><span class="tab-bottom">Puis Sant Feliu</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-27" aria-controls="programme-du-jour" aria-selected="false" data-day="27" tabindex="-1"><span class="tab-top">LUN. 27</span><span class="tab-big">Costa Brava</span><span class="tab-bottom">Cap sur Banyuls</span></button>
+          <button type="button" class="day-tab" role="tab" id="tab-28" aria-controls="programme-du-jour" aria-selected="false" data-day="28" tabindex="-1"><span class="tab-top">MAR. 28</span><span class="tab-big">Madeloc</span><span class="tab-bottom">Retour à Toulouse</span></button>
+        </div>
+        <div class="map-and-journal" id="carnet">
+          <div class="map-wrap">
+            <div class="map-header"><div><span class="eyebrow">CARTE INTERACTIVE</span><h3 id="map-title">Le voyage en cinq jours</h3></div><button type="button" id="reset-map" class="map-reset" aria-label="Recentrer la carte sur les étapes affichées">⤢ Recentrer</button></div>
+            <div class="map-frame"><div id="map" aria-label="Carte interactive des lieux du voyage" role="region"><div class="map-placeholder"><span aria-hidden="true">◎</span><strong>Un itinéraire à travers la Catalogne</strong><p>La carte est indisponible hors connexion. Les étapes et leurs liens restent accessibles à droite.</p></div></div><div class="map-legend"><span><i class="key key-known"></i>Documenté</span><span><i class="key key-idea"></i>Envisagé</span><span><i class="key key-line"></i>Liaison schématique</span></div></div>
+            <div class="map-footer"><span>Fond de carte © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a></span><a id="map-google" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">Ouvrir les étapes dans Google Maps ↗</a></div>
+            <p class="map-disclaimer">Les lignes pointillées indiquent uniquement l’ordre géographique des étapes : <strong>ce ne sont pas des traces GPS</strong>. Utiliser les liens Google Maps ou des topoguides pour les déplacements réels.</p>
+          </div>
+          <section class="journal" id="programme-du-jour" role="tabpanel" aria-labelledby="tab-all" tabindex="0"><div class="journal-heading"><span class="eyebrow">02 / LE RÉCIT DES ÉTAPES</span><h3 id="day-title">La route, d’un regard.</h3><p id="day-desc">Les cinq journées du carnet, entre étapes confirmées et pistes d’exploration.</p></div><div class="timeline" id="timeline"><p>Chargement du programme…</p></div></section>
+        </div>
+      </div>
+    </section>
+    <section class="editorial container" aria-labelledby="editorial-heading"><div class="section-intro editorial-intro"><div><span class="eyebrow">03 / IMAGES DE VOYAGE</span><h2 id="editorial-heading">Les lieux qui<br><em>racontent la côte.</em></h2></div><p>Trois décors, trois manières de parcourir ce territoire. Ces notes décrivent les lieux évoqués dans le programme, sans prétendre documenter des souvenirs non communiqués.</p></div><div class="story-grid">
+      <article class="story-card story-born"><span class="story-no">01 — BARCELONE</span><div class="story-deco" aria-hidden="true">✳</div><h3>L'art dans<br><em>les ruelles.</em></h3><p>El Born offre un contraste saisissant : des palais médiévaux devenus écrins pour Picasso et l’art contemporain, à quelques pas les uns des autres.</p><a href="#explorer" data-open-day="25">Voir le samedi <span aria-hidden="true">↗</span></a></article>
+      <article class="story-card story-miro"><span class="story-no">02 — MONTJUÏC</span><div class="story-deco" aria-hidden="true">●</div><h3>Une colline<br><em>pour Miró.</em></h3><p>À Montjuïc, le bâtiment lumineux imaginé par Josep Lluís Sert fait dialoguer l’œuvre de Joan Miró avec les jardins et la ville.</p><a href="#explorer" data-open-day="26">Voir le dimanche <span aria-hidden="true">↗</span></a></article>
+      <article class="story-card story-coast"><span class="story-no">03 — MÉDITERRANÉE</span><div class="story-deco" aria-hidden="true">〰</div><h3>La mer<br><em>à hauteur d’yeux.</em></h3><p>Le Camí de Ronda et les hauteurs de la Tour Madeloc dessinent deux regards différents sur le même bleu méditerranéen.</p><a href="#explorer" data-open-day="27">Voir les sentiers <span aria-hidden="true">↗</span></a></article>
+    </div></section>
+    <section class="footnote"><div class="container footnote-grid"><div><span class="eyebrow">04 / NOTES DE CARNET</span><h2>Ce que l’on sait.<br><em>Ce qui reste à raconter.</em></h2></div><div><p>Ce site a été reconstruit à partir des échanges de préparation du séjour : réservations, étapes prévues, idées de visites et itinéraires recommandés. Aucune photographie personnelle ni aucun relevé GPS du voyage n’ont été fournis.</p><p>Si d’autres souvenirs, billets ou photos sont ajoutés, les étapes pourront être actualisées avec leur statut réel. Pas de traceur d’audience ; page non référencée.</p><p class="credits">Photo d’illustration : <a href="https://commons.wikimedia.org/wiki/File:Barcelona_Skyline.jpg" target="_blank" rel="noopener noreferrer">SGDWN / Wikimedia Commons</a> — <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> (recadrage à l’affichage). Carte : © OpenStreetMap contributors.</p></div></div></section>
+  </main>
+  <noscript><div class="container no-script"><p>Le programme interactif nécessite JavaScript. Repères : 24 avril Le Perthus ; 25 avril Moco 15 h et Picasso 16 h 30 à Barcelone ; 26 avril Fondation Miró envisagée et Sant Feliu ; 27 avril Camí de Ronda envisagé et Banyuls ; 28 avril Tour Madeloc envisagée puis Toulouse.</p><a href="https://nogues.app/">Retour à nogues.app</a></div></noscript>
+</body></html>
